@@ -1,53 +1,75 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-    <title>Product App</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My ASP.NET Application</title>
+
     <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
+    <link href="Content/ui-bootstrap-csp.css" rel="stylesheet" />
+    <script src="Scripts/modernizr-2.8.3.js"></script>
+
 </head>
 <body>
+    <div ng-app="appCar" class="navbar navbar-inverse navbar-fixed-top">
+        <div ng-controller="ctrNewCar">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!--@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })-->
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <!--<li>@Html.ActionLink("Home", "Index", "Home")</li>-->
+                        <li><a ui-sref="home">Home</a></li>
+                        <!--<li>@Html.ActionLink("About", "About", "Home")</li>-->
+                        <li><a ui-sref="about">About</a></li>
+                        <!--<li>@Html.ActionLink("Contact", "Contact", "Home")</li>-->
+                        <li><a ui-sref="contact">Contact</a></li>
+                        <!--<li>@Html.ActionLink("Api Help", "Index", "Help", new { area = "" }, null)</li>-->
+                        <li><a ui-sref="cars">Car Finder</a></li>
+                        <li><a ui-sref="apiHelp">Api Help</a></li>
+                    </ul>
+                    <!--@Html.Partial("_LoginPartial")-->
+                    <!--<div ui-view="login"></div>-->
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
 
-    <div ng-app="appCar">
-        <div ng-controller="myController as index">
-            <button ng-click="index.click()">Click Me</button>
-            <p>Firstname: <input type="text" ng-model="index.model.firstname"/></p>
-            <p>Lastname: <input type="text" ng-model="index.model.lastname" /></p>
+            <div ui-view></div>
 
-            <div>{{index.model.firstname}} {{index.model.lastname }} {{index.message}}</div>
-        </div>
-    <div ng-controller="ctrNewCar">
-        <div class="row">
-            <div class="col-md-4">
-                <select ng-model="selectedYear" ng-options="year for year in years" ng-change="getMakes()" class="form-control"></select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <select ng-model="selectedMake" ng-options="make for make in makes" ng-disabled="selectedYear==''" ng-change="getModels()" class="form-control"></select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <select ng-model="selectedModel" ng-options="model for model in models" ng-disabled="selectedMake==''" ng-change="getTrims()" class="form-control"></select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <select ng-model="selectedTrim" ng-options="trim for trim in trims" ng-disabled="selectedModel==''"  class="form-control"></select>
-            </div>
+            <hr />
         </div>
     </div>
-    </div>
+    <footer>
+        <p>&copy; 2015 - My ASP.NET Application</p>
+    </footer>
 
+    <!--<script src="Scripts/jquery-1.10.2.js"></script>--> <!-- Added from original index.html -->
+    <script src="Scripts/jquery-2.2.3.min.js"></script> <!-- commented out -->
 
-    <script src="Scripts/jquery-1.10.2.js"></script>
-    <script src="Scripts/bootstrap.js"></script>
-    <script src="Scripts/angular.js"></script>
-    <script src="Scripts/angular-resource.js"></script>
-    <script src="Scripts/angular-ui-router.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-resource.min.js"></script>
+    <script src="Scripts/angular-ui-router.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/respond.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap.min.js"></script>
 
     <script src="NgApps/Car.js"></script>
-    <script src="NgApps/Controllers/myController.js"></script>
+    <script src="NgApps/Config.js"></script>
     <script src="NgApps/Controllers/CarController.js"></script>
     <script src="NgApps/Services/svcNewCar.js"></script>
+    <!--<script src="NgApps/Services/CarImage.js"></script>-->
+
+
+
+
+
 </body>
 </html>
