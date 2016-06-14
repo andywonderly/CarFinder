@@ -1,0 +1,49 @@
+﻿<!--<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Product App</title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>-->
+
+    <div ng-app="appCar">
+    <div ng-controller="ctrNewCar">
+        <div class="row">
+            <div class="col-md-4">
+                <select ng-model="selectedYear" ng-options="year for year in years" ng-change="getMakes()" class="form-control"></select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <select ng-model="selectedMake" ng-options="make for make in makes" ng-disabled="selectedYear==''" ng-change="getModels()" class="form-control"></select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <select ng-model="selectedModel" ng-options="model for model in models" ng-disabled="selectedMake==''" ng-change="getTrims()" class="form-control"></select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <select ng-model="selectedTrim" ng-options="trim for trim in trims" ng-disabled="selectedModel==''" ng-change="getCarData()"  class="form-control"></select>
+            </div>
+        </div>
+        <div class="row">
+            <img ng-src="{{imageUrl}}" />
+        </div>
+    </div>
+    </div>
+
+
+    <!--<script src="Scripts/jquery-1.10.2.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-resource.js"></script>
+    <script src="Scripts/angular-ui-router.js"></script>
+
+    <script src="NgApps/Car.js"></script>
+    <script src="NgApps/Controllers/myController.js"></script>
+    <script src="NgApps/Controllers/CarController.js"></script>
+    <script src="NgApps/Services/svcNewCar.js"></script>-->
+<!--</body>
+</html>-->

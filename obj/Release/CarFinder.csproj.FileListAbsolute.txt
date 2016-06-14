@@ -102,3 +102,4 @@ C:\Users\andyw\Documents\Visual Studio 2015\Projects\CarFinder\CarFinder\bin\Sys
 C:\Users\andyw\Documents\Visual Studio 2015\Projects\CarFinder\CarFinder\obj\Release\CarFinder.csproj.App.config
 C:\Users\andyw\Documents\Visual Studio 2015\Projects\CarFinder\CarFinder\obj\Release\CarFinder.dll
 C:\Users\andyw\Documents\Visual Studio 2015\Projects\CarFinder\CarFinder\obj\Release\CarFinder.pdb
+C:\Users\andyw\Documents\Visual Studio 2015\Projects\CarFinder\CarFinder\obj\Release\CarFinder.csprojResolveAssemblyReference.cache

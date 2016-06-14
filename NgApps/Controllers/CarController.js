@@ -2,12 +2,13 @@
     $scope.selectedYear = '';
     $scope.selectedMake = '';
     $scope.selectedModel = '';
-    //$scope.selectedTrim = '';
+    $scope.selectedTrim = '';
 
     $scope.years = [];
     $scope.makes = [];
     $scope.models = [];
     $scope.trims = [];
+    $scope.imageUrl = '';
 
     $scope.getYears = function () {
         svcNewCar.HCLYears().then(function (data) {
@@ -33,7 +34,20 @@
         });
     };
 
+    $scope.getCarData = function () {
+        svcNewCar.HCLGetCarData($scope.selectedYear, $scope.selectedMake, $scope.selectedModel, $scope.selectedTrim).then(function (data) {
+            $scope.imageUrl = data.Images;
+            
+        });
+    };
+
     $scope.getYears();
-    $scope.getMakes();
-    $scope.getModels();
 }])
+
+app.controller('HomeController', ['$scope', 'svcNewCar', function ($scope, svcNewCar) {}])
+
+app.controller('AboutController', ['$scope', 'svcNewCar', function ($scope, svcNewCar) {}])
+
+app.controller('ContactController', ['$scope', 'svcNewCar', function ($scope, svcNewCar) {}])
+
+app.controller('ApiHelpController', ['$scope', 'svcNewCar', function ($scope, svcNewCar) {}])

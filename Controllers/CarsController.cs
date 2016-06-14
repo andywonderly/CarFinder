@@ -88,7 +88,7 @@ namespace CarFinder.Controllers
         [Route("YearMakeModelTrims")]
         public async Task<Cars> GetYearMakeModelTrims(string model_year, string make, string model_name, string model_trim)
         {
-            return await db.YearMakeModelTrims(model_year, model_name, make, model_trim);
+            return await db.GetCar(model_year, model_name, make, model_trim);
         }
 
         [Route("YearMakes")]
@@ -99,16 +99,16 @@ namespace CarFinder.Controllers
 
         
 
-        [Route("getCar")]
-        public async Task<IHttpActionResult> getCarData(string year = "", string make = "", string model = "", string trim = "")
+        [Route("GetCarData")]
+        public async Task<IHttpActionResult> GetCarData(string model_year = "", string make = "", string model_name = "", string model_trim = "")
         {
             HttpResponseMessage response;
             var content = "";
-            var singleCar = await db.YearMakeModelTrims(year, model, make, trim);
+            var singleCar = await db.GetCar(model_year, make, model_name, model_trim);
             var car = new carViewModel
             {
-                //Car = GetYearMakeModelTrims(year, make, model, trim),
                 Car = singleCar,
+                //Car = db.GetCars(year, make, model, trim),
                 Recalls = content,
                 Images = ""
 
@@ -122,8 +122,8 @@ namespace CarFinder.Controllers
                 client.BaseAddress = new Uri("http://www.nhtsa.gov/");
                 try
                 {
-                    response = await client.GetAsync("webapi/api/Recalls/vehicle/modelyear/" + year + "/make/"
-                        + make + "/model/" + model + "?format=json");
+                    response = await client.GetAsync("webapi/api/Recalls/vehicle/modelyear/" + model_year + "/make/"
+                        + make + "/model/" + model_name + "?format=json");
                     content = await response.Content.ReadAsStringAsync();
 
                 }
@@ -138,13 +138,13 @@ namespace CarFinder.Controllers
 
             //////////////////////////////   My Bing Search   //////////////////////////////////////////////////////////
 
-            string query = year + " " + make + " " + model + " " + trim;
+            string query = model_year + " " + make + " " + model_name + " " + model_trim;
 
             string rootUri = "https://api.datamarket.azure.com/Bing/Search";
 
             var bingContainer = new Bing.BingSearchContainer(new Uri(rootUri));
 
-            var accountKey = ConfigurationManager.AppSettings["searchKey"]; ;
+            var accountKey = ConfigurationManager.AppSettings["BingAPIKey"]; ;
 
             bingContainer.Credentials = new NetworkCredential(accountKey, accountKey);
 

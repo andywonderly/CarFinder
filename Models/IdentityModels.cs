@@ -87,11 +87,11 @@ namespace CarFinder.Models
                 new SqlParameter("model_name", model_name)).ToListAsync();
         }
 
-        //public async Task<List<string>> WeightUnder2000Kg(string weight_kg)
-        //{
-        //    return await this.Database.SqlQuery<string>("WeightUnder2000Kg @weight_kg",
-        //        new SqlParameter("Weight_kg", weight_kg)).ToListAsync();
-        //}
+        public async Task<List<string>> WeightUnder2000Kg(string weight_kg)
+        {
+            return await this.Database.SqlQuery<string>("WeightUnder2000Kg @weight_kg",
+                new SqlParameter("Weight_kg", weight_kg)).ToListAsync();
+        }
 
         public async Task<List<string>> WeightUnder2000Kg()
         {
@@ -117,9 +117,9 @@ namespace CarFinder.Models
                 new SqlParameter("model_name", model_name)).ToListAsync();
         }
 
-        public async Task<Cars> YearMakeModelTrims(string model_year, string make, string model_name, string model_trim)
+        public async Task<Cars> GetCar(string model_year, string make, string model_name, string model_trim)
         {
-            return await this.Database.SqlQuery<Cars>("YearMakeModelTrims",
+            return await this.Database.SqlQuery<Cars>("GetCar @model_year, @make, @model_name, @model_trim",
                 new SqlParameter("model_year", model_year),
                 new SqlParameter("make", make),
                 new SqlParameter("model_name", model_name),

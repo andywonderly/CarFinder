@@ -21,4 +21,11 @@
         return $http.get('/api/Cars/YearMakeModelTrims', options)
             .then(function (response) { return response.data; });
     };
+
+    this.HCLGetCarData = function (model_year, make, model_name, model_trim) {
+        var options = { params: { model_year: model_year, make: make, model_name: model_name, model_trim: model_trim } };
+        return $http.get('/api/Cars/GetCarData', options)
+            .then(function (response) { return response.data; });
+    }
+
 }]);
